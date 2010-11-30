@@ -5,6 +5,8 @@
 
 package com.trabalho.agenda;
 
+import com.trabalho.agenda.dao.DaoFactory;
+
 /**
  *
  * @author Marcus Vinicius
@@ -15,7 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        DaoFactory dao = new DaoFactory();
+        dao.getPessoaDao();
     }
 
 }
