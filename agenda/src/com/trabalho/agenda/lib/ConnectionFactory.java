@@ -1,4 +1,4 @@
-package com.trabalho.agenda.dao;
+package com.trabalho.agenda.lib;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
