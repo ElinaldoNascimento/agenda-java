@@ -22,4 +22,7 @@ public class DaoFactory {
     public PessoaDao getPessoaDao(){
         return new PessoaDao(connection);
     }
+    public ContatoDao getContatoDao(){
+    	return new ContatoDao(connection);
+    }
 }
