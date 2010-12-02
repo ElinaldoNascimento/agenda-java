@@ -64,16 +64,17 @@ public void salvar(Contato contato) throws SQLException {
 	
 	for (Telefone telefone : telefones) {
 		
-		stmt.setString(1, telefone.getNumero());
-		stmt.setLong(2, id_contato);
+		stmt2.setString(1, telefone.getNumero());
+		stmt2.setLong(2, id_contato);
 		
-		stmt.execute();
+		stmt2.execute();
 		
 		
 	}
 	
 	
 		stmt.close();
+		stmt2.close();
 	
 		
 	}
