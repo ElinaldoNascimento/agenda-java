@@ -10,15 +10,15 @@ package com.trabalho.agenda.bean;
  */
 public class Telefone {
 
-    private Integer id;
+    private Long id;
     private String numero;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(long l) {
+        this.id = l;
     }
 
     public String getNumero() {
