@@ -20,7 +20,7 @@ public class AcoesContato {
 		
 	
 		String endereco = request.getParameter("endereco");
-		String aptNo = request.getParameter("aptNo");
+		String aptNo = request.getParameter("numApat");
 		String bairro = request.getParameter("bairro");
 		String cidade = request.getParameter("cidade");
 		String Cep = request.getParameter("cep");
@@ -33,7 +33,7 @@ public class AcoesContato {
 		Telefone tele = new Telefone();
 		tele.setNumero(telefone);
 		
-		List<Telefone> telefones = null;
+		List<Telefone> telefones = new ArrayList<Telefone>();
 		telefones.add(tele);
 		
 		contato.setEndereco(endereco);
@@ -52,7 +52,6 @@ public class AcoesContato {
 
 	public static String salvar(HttpServletRequest request,
 			HttpServletResponse response) throws SQLException {
-		
 		Contato contato = mapContato(request);
 		
 		DaoFactory dao = new DaoFactory();
