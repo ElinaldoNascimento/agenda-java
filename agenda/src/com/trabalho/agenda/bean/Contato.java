@@ -12,7 +12,7 @@ import java.util.List;
  * @author Marcus Vinicius
  */
 public class Contato {
-private Integer id;
+private Long id;
 private String endereco;
 private String aptNo;
 private String bairro;
@@ -79,12 +79,12 @@ private String observacao;
         this.estado = estado;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(long l) {
+        this.id = l;
     }
 
     public String getObservacao() {
