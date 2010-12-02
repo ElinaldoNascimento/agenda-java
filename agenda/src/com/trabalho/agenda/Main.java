@@ -1,6 +1,6 @@
 package com.trabalho.agenda;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.util.List;
 
 import com.trabalho.agenda.bean.Telefone;
@@ -18,7 +18,7 @@ public class Main {
 	
 	DaoFactory dao = new DaoFactory();
 	
-	PessoaDao tele = new PessoaDao(dao.getPessoaDao());
+	PessoaDao tele = dao.getPessoaDao();
 		
 	List<Telefone> telefones = tele.getAll();
 	

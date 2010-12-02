@@ -21,9 +21,12 @@ import com.trabalho.agenda.bean.Telefone;
 public class PessoaDao {
     private final Connection connection;
 
-    public PessoaDao(PessoaDao pessoaDao) {
-        this.connection = pessoaDao;
-    }
+    
+	public PessoaDao(Connection connection) {
+		super();
+		this.connection = connection;
+	}
+
 
 	public void salvar(Object pessoa) {
 		
