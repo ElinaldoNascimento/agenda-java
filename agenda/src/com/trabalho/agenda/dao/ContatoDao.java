@@ -29,8 +29,8 @@ public class ContatoDao {
 public void salvar(Contato contato) throws SQLException {
 		
 		String sql =
-				"insert into contato(endereco,numeroApart,bairro,cidade,cep" +
-				"estado,email)values (?,?,?,?,?,?,?);";
+				"insert into contato(endereco,numeroApart,bairro,cidade,cep," +
+				"estado,email) values (?,?,?,?,?,?,?);";
 	
 		
 		
@@ -53,7 +53,7 @@ public void salvar(Contato contato) throws SQLException {
 	
 	Long id_contato = contato2.getId();
 	
-	String sql2 = "insert into telefone(telefone,id_contato)values (?,?);";
+	String sql2 = "insert into telefone(telefone,id_contato) values (?,?);";
 	
 	PreparedStatement stmt2 = (PreparedStatement) connection.prepareStatement(sql);
 	
