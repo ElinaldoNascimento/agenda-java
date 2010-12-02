@@ -14,7 +14,7 @@ public class ConnectionFactory {
 
         if (connection == null) {
             try {
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/agenda", "root", "");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/agenda", "root", "elinaldo153");
             } catch (SQLException ex) {
                 Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
             }
