@@ -6,6 +6,8 @@ package com.trabalho.agenda.dao;
 
 import java.sql.Connection;
 
+import com.trabalho.agenda.bean.Contato;
+
 /**
  *
  * @author Marcus Vinicius
@@ -17,4 +19,11 @@ public class ContatoDao {
     public ContatoDao(Connection connection) {
         this.connection = connection;
     }
+
+	public static void salvar(Contato contato) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+    
 }
