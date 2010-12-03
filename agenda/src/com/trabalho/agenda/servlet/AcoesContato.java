@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.trabalho.agenda.bean.Contato;
+import com.trabalho.agenda.bean.Pessoa;
 import com.trabalho.agenda.bean.Telefone;
 import com.trabalho.agenda.dao.ContatoDao;
 import com.trabalho.agenda.dao.DaoFactory;
@@ -14,11 +15,13 @@ import com.trabalho.agenda.dao.DaoFactory;
 public class AcoesContato {
 	
 
-	private static Contato mapContato(HttpServletRequest request){
+	private static Pessoa mapContato(HttpServletRequest request){
 		
 		Contato contato = new Contato();
+		Pessoa pessoa = new Pessoa();
 		
-	
+		String nome = request.getParameter("nome");
+		String sobrenome = request.getParameter("sobrenome");
 		String endereco = request.getParameter("endereco");
 		String aptNo = request.getParameter("numApat");
 		String bairro = request.getParameter("bairro");
@@ -35,7 +38,8 @@ public class AcoesContato {
 		
 		List<Telefone> telefones = new ArrayList<Telefone>();
 		telefones.add(tele);
-		
+		pessoa.setNome(nome);
+		pessoa.setSobrenome(sobrenome);
 		contato.setEndereco(endereco);
 		contato.setAptNo(aptNo);
 		contato.setBairro(bairro);
@@ -45,20 +49,22 @@ public class AcoesContato {
 		contato.setEstado(estado);
 		contato.setObservacao(observacao);
 		contato.setEmail(email);
-		
-		return contato;
+		pessoa.setContato(contato);
+		return pessoa;
 		
 	}
 
 	public static String salvar(HttpServletRequest request,
 			HttpServletResponse response) throws SQLException {
-		Contato contato = mapContato(request);
+		Pessoa pessoa = mapContato(request);
 		
 		DaoFactory dao = new DaoFactory();
 		
 		
-		dao.getContatoDao().salvar(contato);
 		
+		dao.getContatoDao().salvar(pessoa.getContato());
+		pessoa.setContato(dao.getContatoDao().lastIdContato());
+		dao.getPessoaDao().salvar(pessoa);
 		return "salvo";
 		
 	}
