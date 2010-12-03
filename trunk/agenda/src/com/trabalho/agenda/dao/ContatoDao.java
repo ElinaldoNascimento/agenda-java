@@ -33,7 +33,7 @@ public void salvar(Contato contato) throws SQLException {
 		
 		String sql =
 				"insert into contato(endereco,numeroApart,bairro,cidade,cep," +
-				"estado,email) values (?,?,?,?,?,?,?);";
+				"estado,email,observacao) values (?,?,?,?,?,?,?,?);";
 	
 		
 		
@@ -46,6 +46,7 @@ public void salvar(Contato contato) throws SQLException {
 	stmt.setString(5, contato.getEstado());
 	stmt.setString(6, contato.getEstado());
 	stmt.setString(7, contato.getEmail());
+	stmt.setString(8, contato.getObservacao());
 	
 	stmt.execute();
 	
