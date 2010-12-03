@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.PreparedStatement;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
+import java.sql.PreparedStatement;
 import com.trabalho.agenda.bean.Contato;
 import com.trabalho.agenda.bean.Pessoa;
 import com.trabalho.agenda.bean.Telefone;
@@ -22,16 +21,28 @@ import com.trabalho.agenda.bean.Telefone;
  * @author Marcus Vinicius
  */
 public class PessoaDao {
-    private final Connection connection;
+	private PreparedStatement stmt;
+	private final Connection connection;
 
-    public PessoaDao(Connection connection) {
-        this.connection = connection;
-    }
-    
+	public PessoaDao(Connection connection) {
+		this.connection = connection;
+	}
 
-	
-	
+	public void salvar(Pessoa pessoa) throws SQLException{
+		String sql = "insert into pessoa(nome,sobrenome,id_contato) values(?,?,?)";	
+		stmt = connection.prepareStatement(sql);
+		stmt.setString(1, pessoa.getNome());
+		stmt.setString(2, pessoa.getSobrenome());
+		stmt.setLong(3, pessoa.getContato().getId());
+		stmt.execute();
+		stmt.close();
 
-	
-	
+	}
+
+
+
+
+
+
+
 }
