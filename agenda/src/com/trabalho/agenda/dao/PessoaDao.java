@@ -5,6 +5,7 @@
 
 package com.trabalho.agenda.dao;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,8 +40,177 @@ public class PessoaDao {
 
 	}
 
+	public Pessoa getById(Integer id){
+		
+		String sql = "select * from pessoa,contato,telefone where pessoa.id_contato = contato.id_contato " +
+				"and telefone.id_contato = contato.id_contato and pessoa.id_pessoa = ?;";
+		
+		PreparedStatement stmt;
+		ResultSet rs;
+		Pessoa pessoa = new Pessoa();
+		Contato contato = new Contato();
+		
+		
+		
+		try {
+			
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id);
+			
+			rs = stmt.executeQuery();
+			
+			if(rs.next()){
+				
+				Telefone tele = new Telefone();
+				tele.setId(rs.getLong("id_telefone"));
+				tele.setNumero(rs.getString("telefone"));
+				List<Telefone> telefones = new ArrayList<Telefone>();
+				telefones.add(tele);
+				
+				pessoa.setId(rs.getLong("id_pessoa"));
+				contato.setId(rs.getLong("id_contato"));
+				contato.setAptNo(rs.getString("numeroApart"));
+				contato.setBairro(rs.getString("bairro"));
+				contato.setCEP(rs.getString("cep"));
+				contato.setCidade(rs.getString("cidade"));
+				contato.setEmail(rs.getString("email"));
+				contato.setEndereco(rs.getString("endereco"));
+				contato.setEstado(rs.getString("estado"));
+				contato.setObservacao(rs.getString("observacao"));
+				
+				
+				contato.setTelefones(telefones);
+				pessoa.setContato(contato);
+				pessoa.setNome(rs.getString("nome"));
+				pessoa.setSobrenome(rs.getString("sobrenome"));
+				
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		return pessoa;
+	}
+	
+	public Pessoa lastPessoa(Long id){
+		
+		String sql = "select * from pessoa,contato,telefone where pessoa.id_contato = contato.id_contato " +
+				"and telefone.id_contato = contato.id_contato and pessoa.id_pessoa = ?;";
+		
+		PreparedStatement stmt;
+		ResultSet rs;
+		Pessoa pessoa = new Pessoa();
+		Contato contato = new Contato();
+		
+		
+		
+		try {
+			
+			stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, id);
+			
+			rs = stmt.executeQuery();
+			
+			if(rs.next()){
+				
+				Telefone tele = new Telefone();
+				tele.setId(rs.getLong("id_telefone"));
+				tele.setNumero(rs.getString("telefone"));
+				List<Telefone> telefones = new ArrayList<Telefone>();
+				telefones.add(tele);
+				
+				pessoa.setId(rs.getLong("id_pessoa"));
+				contato.setId(rs.getLong("id_contato"));
+				contato.setAptNo(rs.getString("numeroApart"));
+				contato.setBairro(rs.getString("bairro"));
+				contato.setCEP(rs.getString("cep"));
+				contato.setCidade(rs.getString("cidade"));
+				contato.setEmail(rs.getString("email"));
+				contato.setEndereco(rs.getString("endereco"));
+				contato.setEstado(rs.getString("estado"));
+				contato.setObservacao(rs.getString("observacao"));
+				
+				
+				contato.setTelefones(telefones);
+				pessoa.setContato(contato);
+				pessoa.setNome(rs.getString("nome"));
+				pessoa.setSobrenome(rs.getString("sobrenome"));
+				
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		return pessoa;
+	}
 
 
+	public List<Pessoa> getAll(){
+		
+		String sql = "select * from pessoa,contato,telefone where pessoa.id_contato = contato.id_contato " +
+				"and telefone.id_contato = contato.id_contato;";
+		
+		List<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+		
+		PreparedStatement stmt;
+		ResultSet rs = null;
+		
+		try {
+			
+			stmt = connection.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				Pessoa pessoa = new Pessoa();
+				Contato contato = new Contato();
+				
+				Telefone tele = new Telefone();
+				tele.setId(rs.getLong("id_telefone"));
+				tele.setNumero(rs.getString("telefone"));
+				List<Telefone> telefones = new ArrayList<Telefone>();
+				telefones.add(tele);
+				
+				pessoa.setId(rs.getLong("id_pessoa"));
+				contato.setId(rs.getLong("id_contato"));
+				contato.setAptNo(rs.getString("numeroApart"));
+				contato.setBairro(rs.getString("bairro"));
+				contato.setCEP(rs.getString("cep"));
+				contato.setCidade(rs.getString("cidade"));
+				contato.setEmail(rs.getString("email"));
+				contato.setEndereco(rs.getString("endereco"));
+				contato.setEstado(rs.getString("estado"));
+				contato.setObservacao(rs.getString("observacao"));
+				
+				
+				contato.setTelefones(telefones);
+				pessoa.setContato(contato);
+				pessoa.setNome(rs.getString("nome"));
+				pessoa.setSobrenome(rs.getString("sobrenome"));
+				
+				listaPessoas.add(pessoa);
+				
+			}
+	
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+	
+		return listaPessoas;
+		
+		
+		
+	}
 
 
 

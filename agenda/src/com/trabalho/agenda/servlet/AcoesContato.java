@@ -57,6 +57,7 @@ public class AcoesContato {
 	public static String salvar(HttpServletRequest request,
 			HttpServletResponse response) throws SQLException {
 		Pessoa pessoa = mapContato(request);
+
 		
 		DaoFactory dao = new DaoFactory();
 		
@@ -65,8 +66,27 @@ public class AcoesContato {
 		dao.getContatoDao().salvar(pessoa.getContato());
 		pessoa.setContato(dao.getContatoDao().lastIdContato());
 		dao.getPessoaDao().salvar(pessoa);
-		return "salvo";
+		
+		 
+		return "salvo.jsp";
 		
 	}
+
+	public static String listarTodos(HttpServletRequest request,
+			HttpServletResponse response) {
+
+		DaoFactory dao = new DaoFactory();
+		List<Pessoa> pessoas  = new ArrayList<Pessoa>();
+		
+		pessoas = dao.getPessoaDao().getAll();
+		
+		request.setAttribute("pessoas", pessoas);
+		
+		return "listarContatos.jsp";
+		
+	}
+	
+	
+	
 
 }

@@ -45,12 +45,14 @@
 	</p>
 	
 	<p>
-	Observação<textarea rows="4" cols="20">
+	Observação<textarea rows="4" cols="20" name="observacao">
 	
 	</textarea>
 	</p>
 	<input type="submit" value="gravar"/>
 	</form>
+	
+	<a href="contato?acao=listar">Listar Todos</a>
 
 </body>
 </html>

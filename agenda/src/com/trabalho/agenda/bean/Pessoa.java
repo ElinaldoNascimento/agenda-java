@@ -10,7 +10,7 @@ package com.trabalho.agenda.bean;
  */
 public class Pessoa {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private String sobrenome;
     private Contato contato;
@@ -23,11 +23,11 @@ public class Pessoa {
         this.contato = contato;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
