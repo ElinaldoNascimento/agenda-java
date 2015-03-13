@@ -1,0 +1,1 @@
+Este projeto tem como principal objetivo prover uma aprendizagem acadêmica sobre JAVA WEB puro o intuído principal deste projeto é disseminar conhecimento.
